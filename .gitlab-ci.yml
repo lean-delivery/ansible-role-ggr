@@ -41,7 +41,7 @@ AWS ggr:
   tags:
     - aws
 
-.EPC ggr:
+EPC ggr:
   variables:
     EPC_REGION: EPAM-BY2
   stage: deployment test

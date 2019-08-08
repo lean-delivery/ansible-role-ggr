@@ -4,8 +4,8 @@ ggr role
 [![Build Status](https://travis-ci.org/lean-delivery/ansible-role-ggr.svg?branch=master)](https://travis-ci.org/lean-delivery/ansible-role-ggr)
 [![Build Status](https://gitlab.com/lean-delivery/ansible-role-ggr/badges/master/pipeline.svg)](https://gitlab.com/lean-delivery/ansible-role-ggr/pipelines)
 [![Galaxy](https://img.shields.io/badge/galaxy-lean__delivery.ggr-blue.svg)](https://galaxy.ansible.com/lean_delivery/ggr)
-![Ansible](https://img.shields.io/ansible/role/d/role_id.svg)
-![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2Frole_id%2F&query=$.min_ansible_version)
+![Ansible](https://img.shields.io/ansible/role/d/42600.svg)
+![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2F42600%2F&query=$.min_ansible_version)
 
 A brief description of the role goes here.
 
