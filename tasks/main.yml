@@ -1,0 +1,105 @@
+---
+# tasks file for go-grid-router
+- name: Load a system variables file based on distribution or OS family
+  include_vars: '{{ distribution }}'
+  with_first_found:
+    - '{{ ansible_os_family }}.yml'
+    - default.yml
+  loop_control:
+    loop_var: distribution
+
+- name: Become block
+  block:
+    - name: Install requirements
+      package:
+        name: '{{ ggr_requirements }}'
+        state: present
+      register: installed_packages
+      until: installed_packages is succeeded
+
+    - name: 'Install pip package'
+      package:
+        name: python-pip
+        state: present
+      register: status
+      until: status is succeeded
+
+    - name: Install passlib
+      pip:
+        name: passlib
+        state: present
+      register: installed_packages
+      until: installed_packages is succeeded
+
+    - name: Creating user for daemons
+      user:
+        name: '{{ ggr_user }}'
+        create_home: true
+        home: '{{ home_ggr }}'
+        comment: Go Grid Router user
+        shell: /usr/sbin/nologin
+        state: present
+
+    - name: Setup directories
+      file:
+        path: '{{ home_ggr }}/{{ ggr_dir_item }}'
+        state: directory
+        mode: 0775
+        owner: '{{ ggr_user }}'
+        group: '{{ ggr_user }}'
+      loop: '{{ ggr_components }}'
+      loop_control:
+        loop_var: ggr_dir_item
+
+    - name: Download Go Grid Router, Go Grid Router UI, Selenoid UI
+      get_url:
+        url: '{{ item.base_url }}/{{ item.version }}/{{ item.key }}_linux_amd64'
+        dest: '{{ item.dest }}'
+        mode: 0775
+        owner: '{{ ggr_user }}'
+        group: '{{ ggr_user }}'
+      loop:
+        - key: ggr
+          base_url: https://github.com/aerokube/ggr/releases/download
+          dest: '{{ home_ggr }}/go-grid-router/ggr'
+          version: 1.6.4
+        - key: ggr-ui
+          base_url: https://github.com/aerokube/ggr-ui/releases/download
+          dest: '{{ home_ggr }}/go-grid-router/ggr-ui'
+          version: 1.1.2
+
+    - name: Create systemd file ggr
+      template:
+        src: '{{ item }}.j2'
+        dest: '{{ ggr_start_script_path }}{{ item }}'
+        owner: '{{ ggr_user }}'
+        group: '{{ ggr_user }}'
+        mode: 0774
+      loop: '{{ ggt_init_script }}'
+      notify:
+        - started {{ item }} systemd
+
+    - name: Configure Go Grid Router quota
+      copy:
+        dest: '{{ home_ggr }}/go-grid-router/quota'
+        src: '{{ role_path }}/files/{{ item }}'
+        mode: 0664
+        owner: '{{ ggr_user }}'
+        group: '{{ ggr_user }}'
+      loop: '{{ ggr_config }}'
+      become: true
+
+    - name: Configure Go Grid Router users
+      htpasswd:
+        path: '{{ home_ggr }}/go-grid-router/users.htpasswd'
+        name: '{{ item.key }}'
+        password: '{{ item.value }}'
+        owner: '{{ ggr_user }}'
+        group: '{{ ggr_user }}'
+        mode: 0640
+      loop:
+        - key: ggr-users
+          value: 'SuperSecretPass098123'
+        - key: health
+          value: 'health'
+  become: true

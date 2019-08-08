@@ -1,0 +1,20 @@
+{
+    "service": {
+      "id": "selenoid-ui",
+      "name": "selenoid-ui",
+      "Port": 8080,
+      "check": {
+        "id": "Selenoid_UI_HTTP",
+        "name": "Selenoid UI Health check",
+        "http": "http://localhost:8080/",
+        "tls_skip_verify": false,
+        "method": "GET",
+        "interval": "10s",
+        "timeout": "1s"
+      },
+      "weights": {
+        "passing": 5,
+        "warning": 1
+      }
+    }
+}

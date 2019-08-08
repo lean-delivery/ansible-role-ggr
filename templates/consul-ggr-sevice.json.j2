@@ -1,0 +1,20 @@
+{
+    "service": {
+      "id": "ggr",
+      "name": "ggr",
+      "Port": 4444,
+      "check": {
+        "id": "GGR_HTTP",
+        "name": "Go Grid Router Heath check",
+        "http": "http://localhost:4444/ping",
+        "tls_skip_verify": false,
+        "method": "GET",
+        "interval": "10s",
+        "timeout": "1s"
+      },
+      "weights": {
+        "passing": 5,
+        "warning": 1
+      }
+    }
+}

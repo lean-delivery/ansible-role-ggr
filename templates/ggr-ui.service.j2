@@ -1,0 +1,20 @@
+[Unit]
+Description=ggr-ui
+Requires=ggr.service
+StartLimitIntervalSec=120
+StartLimitBurst=20
+
+[Service]
+Type=simple
+User=ggr
+GuessMainPID=true
+ExecStart={{ home_ggr }}/go-grid-router/ggr-ui -quota-dir {{ home_ggr }}/go-grid-router/quota
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStop=/bin/kill -15 $MAINPID
+Restart=always
+RestartSec=30
+StartLimitInterval=120
+StartLimitBurst=20
+
+[Install]
+WantedBy=multi-user.target

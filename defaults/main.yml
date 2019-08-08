@@ -1,0 +1,21 @@
+---
+# defaults file for ggr
+selenoid_port: 4444
+home_ggr: /home/ggr
+ggr_components:
+  - go-grid-router
+  - go-grid-router/quota
+  # - selenoid-ui
+ggr_config:
+  - ggr-config-consul-template.tpl
+ggr_start_script_path: /etc/systemd/system/
+ggr_user: ggr
+ggt_init_script:
+  - ggr.service
+  - ggr-ui.service
+  # - selenoid-ui.service
+
+# consul_service_definition:
+#   - consul-ggr-sevice.json
+#   - consul-ggr-ui-sevice.json
+#   - consul-selenoid-ui-sevice.json
