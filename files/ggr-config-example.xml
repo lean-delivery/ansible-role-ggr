@@ -1,0 +1,44 @@
+<qa:browsers xmlns:qa="urn:config.gridrouter.qatools.ru">
+    <browser name="chrome" defaultVersion="unknown">
+            <version number=" 71.0">
+                <region name="1">
+                    <host name="10.11.2.204" port="4444" count="100"/>
+                    <host name="10.11.2.60" port="4444" count="100"/>
+                </region>
+            </version>
+            <version number="72.0">
+                <region name="1">
+                    <host name="10.11.2.204" port="4444" count="100"/>
+                    <host name="10.11.2.60" port="4444" count="100"/>
+                </region>
+            </version>
+    </browser>
+    <browser name="firefox" defaultVersion="unknown">
+            <version number=" 64.0">
+                <region name="1">
+                    <host name="10.11.2.204" port="4444" count="100"/>
+                    <host name="10.11.2.60" port="4444" count="100"/>
+                </region>
+            </version>
+            <version number="65.0">
+                <region name="1">
+                    <host name="10.11.2.204" port="4444" count="100"/>
+                    <host name="10.11.2.60" port="4444" count="100"/>
+                </region>
+            </version>
+    </browser>
+    <browser name="opera" defaultVersion="unknown">
+            <version number=" 57.0">
+                <region name="1">
+                    <host name="10.11.2.204" port="4444" count="100"/>
+                    <host name="10.11.2.60" port="4444" count="100"/>
+                </region>
+            </version>
+            <version number="58.0">
+                <region name="1">
+                    <host name="10.11.2.204" port="4444" count="100"/>
+                    <host name="10.11.2.60" port="4444" count="100"/>
+                </region>
+            </version>
+    </browser>
+</qa:browsers>

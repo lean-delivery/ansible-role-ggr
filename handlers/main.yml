@@ -1,0 +1,29 @@
+---
+# handlers file for ggr
+- name: started ggr.service systemd
+  systemd:
+    state: started
+    enabled: true
+    name: ggr
+  become: true
+
+- name: started ggr-ui.service systemd
+  systemd:
+    state: started
+    enabled: true
+    name: ggr-ui
+  become: true
+
+# - name: started selenoid-ui.service systemd
+#   systemd:
+#     state: restarted
+#     enabled: true
+#     name: selenoid-ui
+#   become: true
+
+# - name: started consul-template.service systemd
+#   systemd:
+#     state: restarted
+#     enabled: true
+#     name: consul-template
+#   become: true

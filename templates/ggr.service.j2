@@ -1,0 +1,19 @@
+[Unit]
+Description=GGR
+{# Requires=selenoid-ui.service #}
+StartLimitIntervalSec=120
+StartLimitBurst=20
+
+[Service]
+Type=simple
+User=ggr
+GuessMainPID=true
+ExecStart={{ home_ggr }}/go-grid-router/ggr -listen 0.0.0.0:{{ selenoid_port }} -users {{ home_ggr }}/go-grid-router/users.htpasswd -quotaDir {{ home_ggr }}/go-grid-router/quota
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStop=/bin/kill -15 $MAINPID
+Restart=always
+StartLimitInterval=120
+StartLimitBurst=20
+
+[Install]
+WantedBy=multi-user.target
