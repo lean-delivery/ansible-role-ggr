@@ -20,7 +20,11 @@
         {{- range $i := loop (printf "%d" ( $versions_list | len) | parseInt) }}
             {{- scratch.MapSet "defaultVersion" (index $versions_list $i) (index $versions_list $i) }}
         {{- end }}
+    {{- if eq $browser "ie11" }}
+    <browser name="internet explorer" defaultVersion="{{ index (scratch.MapValues "defaultVersion") ((printf "%d" ( $versions_list | len) | parseInt) | subtract 1) }}">
+    {{- else }}
     <browser name="{{ $browser }}" defaultVersion="{{ index (scratch.MapValues "defaultVersion") ((printf "%d" ( $versions_list | len) | parseInt) | subtract 1) }}">
+    {{- end }}
         {{- range $i := loop (printf "%d" ( $versions_list | len) | parseInt) }}
             {{- $version := (index $versions_list $i) }}
             {{- with (scratch.MapValues $version) }}
