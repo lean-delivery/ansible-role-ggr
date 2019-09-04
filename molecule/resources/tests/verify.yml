@@ -3,6 +3,15 @@
 - name: Verify
   hosts: all
   tasks:
-    - name: Example assertion
+    - name: Populate service facts
+      service_facts:
+
+    - name: Debug ansible_facts.services
+      debug:
+        var: ansible_facts.services
+
+    - name: Assert that ggr services are running
       assert:
-        that: true
+        that:
+          - "'running' in ansible_facts.services['ggr.service'].state"
+          - "'running' in ansible_facts.services['ggr-ui.service'].state"
