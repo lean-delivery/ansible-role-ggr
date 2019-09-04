@@ -77,6 +77,7 @@
         mode: 0774
       loop: '{{ ggt_init_script }}'
       notify:
+        - Reload systemd configuration
         - Restart {{ item }}
 
     - name: Configure Go Grid Router quota

@@ -1,5 +1,10 @@
 ---
 # handlers file for ggr
+- name: Reload systemd configuration
+  systemd:
+    daemon_reload: true
+  become: true
+
 - name: Restart ggr.service
   systemd:
     state: restarted
