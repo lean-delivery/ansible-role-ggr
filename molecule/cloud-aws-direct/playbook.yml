@@ -4,6 +4,8 @@
   become: true
   become_user: root
   roles:
-    - role: ansible-consul
+    - role: brianshumate.consul
       consul_group_name: consul_instances
     - role: ansible-role-ggr
+  vars:
+    consul_raw_key: ''
