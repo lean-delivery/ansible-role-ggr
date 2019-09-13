@@ -24,6 +24,7 @@ platforms:
     ssh_user: centos
     groups:
       - rhel_family
+      - consul_instances
 
   - name: test-aws-amazon2-ggr
     image: ami-0b898040803850657
@@ -39,6 +40,7 @@ platforms:
     ssh_user: ec2-user
     groups:
       - rhel_family
+      - consul_instances
 
   # - name: test-aws-ubuntu18-ggr
   #   image: ami-012fd5eb46f56731f
