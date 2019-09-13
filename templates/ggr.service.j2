@@ -1,8 +1,8 @@
 [Unit]
 Description=GGR
-{# Requires=selenoid-ui.service #}
-{# StartLimitIntervalSec=120
-StartLimitBurst=0 #}
+Requires=selenoid-ui.service
+StartLimitIntervalSec=120
+StartLimitBurst=0
 
 [Service]
 Type=simple
