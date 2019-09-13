@@ -5,6 +5,12 @@
     daemon_reload: true
   become: true
 
+- name: Restart selenoid-ui.service
+  systemd:
+    state: restarted
+    name: selenoid-ui
+  become: true
+
 - name: Restart ggr.service
   systemd:
     state: restarted
