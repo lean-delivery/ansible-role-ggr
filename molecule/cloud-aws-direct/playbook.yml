@@ -2,7 +2,7 @@
 - name: Converge
   hosts: consul_instances
   become: true
-  become_user: root
+  become_user: ggr
   roles:
     - role: ansible-consul
       consul_group_name: consul_instances
