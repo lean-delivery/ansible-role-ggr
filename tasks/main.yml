@@ -82,7 +82,7 @@
       loop: '{{ ggt_init_script }}'
       notify:
         - Reload systemd configuration
-        #- Restart {{ item }}
+        - Restart {{ item }}
 
     - name: Configure Go Grid Router quota
       copy:
@@ -107,15 +107,15 @@
         - key: health
           value: 'health'
 
-    - name: started ggr services systemd
-      systemd:
-        state: started
-        enabled: true
-        name: '{{ ggr_service_item }}'
-      loop:
-        - selenoid-ui
-        - ggr
-        - ggr-ui
-      loop_control:
-        loop_var: ggr_service_item
+#    - name: started ggr services systemd
+#      systemd:
+#        state: started
+#        enabled: true
+#        name: '{{ ggr_service_item }}'
+#      loop:
+#        - selenoid-ui
+#        - ggr
+#        - ggr-ui
+#      loop_control:
+#        loop_var: ggr_service_item
   become: true
