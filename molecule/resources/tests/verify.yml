@@ -10,6 +10,14 @@
       debug:
         var: ansible_facts.services
 
+    - name: Get service status
+      command: service ggr status
+      register: services_state
+
+    - name: Debug
+      debug:
+        var: services_state
+
     - name: Assert that ggr services are running
       assert:
         that:
