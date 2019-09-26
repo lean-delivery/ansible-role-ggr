@@ -45,8 +45,8 @@
         var: ansible_facts.services['ggr.service'].state
 
     - name: Debug
-        debug:
-          var: ansible_facts.services['ggr-ui.service'].state
+      debug:
+        var: ansible_facts.services['ggr-ui.service'].state
 
     - name: Assert that ggr services are running
       assert:
