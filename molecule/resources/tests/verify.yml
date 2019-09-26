@@ -11,7 +11,7 @@
         var: ansible_facts.services
 
     - name: Get service status
-      command: service ggr status
+      command: systemctl status ggr.service
       register: services_state
 
     - name: Debug
