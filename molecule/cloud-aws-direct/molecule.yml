@@ -10,21 +10,21 @@ lint:
   options:
     config-file: .yamllint
 platforms:
-  - name: test-aws-centos7-ggr
-    image: ami-9887c6e7
-    platform: centos7
-    instance_type: m5.large
-    region: us-east-1
-    vpc_subnet_id: subnet-0f2b9cd66faea38af
-    assign_public_ip: False
-    spot_price: 0.04
-    security_group_name:
-      - default
-    wait_timeout: 1800
-    ssh_user: centos
-    groups:
-      - rhel_family
-      - consul_instances
+#  - name: test-aws-centos7-ggr
+#    image: ami-9887c6e7
+#    platform: centos7
+#    instance_type: m5.large
+#    region: us-east-1
+#    vpc_subnet_id: subnet-0f2b9cd66faea38af
+#    assign_public_ip: False
+#    spot_price: 0.04
+#    security_group_name:
+#      - default
+#    wait_timeout: 1800
+#    ssh_user: centos
+#    groups:
+#      - rhel_family
+#      - consul_instances
 
   - name: test-aws-amazon2-ggr
     image: ami-0b898040803850657
