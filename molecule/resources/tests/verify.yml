@@ -3,20 +3,40 @@
 - name: Verify
   hosts: all
   tasks:
+#
+#    - name: Debug ansible_facts.services
+#      debug:
+#        var: ansible_facts.services
+
+    - name: Reset failed ggr
+      command: systemctl reset-failed ggr.service
+
+    - name: Reset failed ggr-ui
+        command: systemctl reset-failed ggr-ui.service
+
+    - name: Reset failed selenoid-ui
+        command: systemctl reset-failed selenoid-ui.service
+
+    - name: Restart selenoid-ui.service
+      systemd:
+        state: restarted
+        name: selenoid-ui
+      become: true
+
+    - name: Restart ggr.service
+      systemd:
+        state: restarted
+        name: ggr
+      become: true
+
+    - name: Restart ggr-ui.service
+      systemd:
+        state: restarted
+        name: ggr-ui
+      become: true
+
     - name: Populate service facts
       service_facts:
-
-    - name: Debug ansible_facts.services
-      debug:
-        var: ansible_facts.services
-
-    - name: Get service status
-      command: systemctl status ggr.service
-      register: services_state
-
-    - name: Debug
-      debug:
-        var: services_state
 
     - name: Assert that ggr services are running
       assert:
