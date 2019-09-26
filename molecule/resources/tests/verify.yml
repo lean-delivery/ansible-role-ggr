@@ -10,12 +10,15 @@
 
     - name: Reset failed ggr
       command: systemctl reset-failed ggr.service
+      become: true
 
     - name: Reset failed ggr-ui
       command: systemctl reset-failed ggr-ui.service
+      become: true
 
     - name: Reset failed selenoid-ui
       command: systemctl reset-failed selenoid-ui.service
+      become: true
 
     - name: Restart selenoid-ui.service
       systemd:
