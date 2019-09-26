@@ -34,7 +34,7 @@
       become: true
 
     - name: Debug ggr-ui
-      comand: systemctl status ggr-ui.service
+      command: systemctl status ggr-ui.service
       become: true
 
     - name: Populate service facts
