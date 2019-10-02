@@ -2,8 +2,9 @@
   hosts: consul_instances
   roles:
     - role: brianshumate.consul
-        consul_group_name: consul_instances
-        consul_raw_key: ''
+      consul_group_name: consul_instances
+      consul_raw_key: ''
+
   post_tasks:
     - name: Configure Go Grid Router quota
       copy:
