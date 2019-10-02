@@ -1,3 +1,4 @@
+---
 - name: Install Consul
   hosts: consul_instances
   roles:
