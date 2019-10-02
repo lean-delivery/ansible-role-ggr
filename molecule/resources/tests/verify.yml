@@ -10,6 +10,7 @@
         mode: 0664
         owner: 'ggr'
         group: 'ggr'
+      become: true
 
     - name: Reset failed ggr
       command: systemctl reset-failed ggr.service
