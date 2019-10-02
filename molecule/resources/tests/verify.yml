@@ -4,6 +4,32 @@
   hosts: all
   become: true
   tasks:
+    - name: Configure Go Grid Router quota
+      copy:
+        dest: '/home/ggr/go-grid-router/quota'
+        src: '/builds/lean-delivery/ansible-role-ggr/files/ggr-config-example.xml'
+        mode: 0664
+        owner: 'ggr'
+        group: 'ggr'
+
+    - name: Reset failed services
+      command: systemctl reset-failed {{ item.key }}
+      loop:
+        - key: ggr.service
+        - key: ggr-ui.service
+        - key: selenoid-ui.service
+      become: true
+
+    - name: Restart selenoid-ui.service
+      systemd:
+        state: restarted
+        name: {{ item.key }}
+      loop:
+        - key: ggr
+        - key: ggr-ui
+        - key: selenoid-ui
+      become: true
+
     - name: Populate service facts
       service_facts:
 
