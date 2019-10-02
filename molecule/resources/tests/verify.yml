@@ -5,7 +5,7 @@
   tasks:
     - name: Configure Go Grid Router quota
       copy:
-        dest: '{{ home_ggr }}/go-grid-router/quota'
+        dest: '/home/ggr/go-grid-router/quota'
         src: '{{ role_path }}/files/ggr-config-example.xml'
         mode: 0664
         owner: '{{ ggr_user }}'
