@@ -4,4 +4,4 @@
   become: true
   #become_user: root
   roles:
-    - role: ansible-role-ggr'
+    - role: ansible-role-ggr
