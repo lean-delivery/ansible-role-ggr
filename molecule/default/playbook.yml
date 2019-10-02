@@ -1,5 +1,11 @@
 ---
 - name: Converge
-  hosts: all
+  hosts: consul_instances
+  become: true
+  #become_user: root
   roles:
+    - role: brianshumate.consul
+      consul_group_name: consul_instances
     - role: ansible-role-ggr
+  vars:
+    consul_raw_key: ''
