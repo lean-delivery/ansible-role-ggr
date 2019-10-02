@@ -42,25 +42,13 @@
       become: true
 
     - name: Restart ggr-ui.service
-        systemd:
-          state: restarted
-          name: ggr-ui
-        become: true
+      systemd:
+        state: restarted
+        name: ggr-ui
+      become: true
 
     - name: Populate service facts
       service_facts:
-
-    - name: Debug ansible_facts.services
-      debug:
-        var: ansible_facts.services
-
-    - name: Debug
-      debug:
-        var: ansible_facts.services['ggr.service'].state
-
-    - name: Debug
-      debug:
-        var: ansible_facts.services['ggr-ui.service'].state
 
     - name: Assert that ggr services are running
       assert:
