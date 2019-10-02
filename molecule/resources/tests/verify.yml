@@ -6,10 +6,10 @@
     - name: Configure Go Grid Router quota
       copy:
         dest: '/home/ggr/go-grid-router/quota'
-        src: '{{ role_path }}/files/ggr-config-example.xml'
+        src: '/builds/lean-delivery/ansible-role-ggr/files/ggr-config-example.xml'
         mode: 0664
-        owner: '{{ ggr_user }}'
-        group: '{{ ggr_user }}'
+        owner: 'ggr'
+        group: 'ggr'
 
     - name: Reset failed ggr
       command: systemctl reset-failed ggr.service
