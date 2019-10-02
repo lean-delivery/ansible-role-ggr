@@ -3,6 +3,14 @@
 - name: Verify
   hosts: all
   tasks:
+    - name: Configure Go Grid Router quota
+        copy:
+          dest: '{{ home_ggr }}/go-grid-router/quota'
+          src: '{{ role_path }}/files/ggr-config-example.xml'
+          mode: 0664
+          owner: '{{ ggr_user }}'
+          group: '{{ ggr_user }}'
+
     - name: Reset failed ggr
       command: systemctl reset-failed ggr.service
       become: true
@@ -33,9 +41,11 @@
         name: ggr-ui
       become: true
 
-    - name: Debug ggr-ui
-      command: systemctl status ggr-ui.service
-      become: true
+    - name: Restart ggr-ui.service
+        systemd:
+          state: restarted
+          name: ggr-ui
+        become: true
 
     - name: Populate service facts
       service_facts:
