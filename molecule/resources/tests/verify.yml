@@ -23,7 +23,7 @@
     - name: Restart selenoid-ui.service
       systemd:
         state: restarted
-        name: {{ item.key }}
+        name: "{{ item.key }}"
       loop:
         - key: ggr
         - key: ggr-ui
