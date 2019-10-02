@@ -9,4 +9,3 @@
     - role: ansible-role-ggr
   vars:
     consul_raw_key: ''
-
