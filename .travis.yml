@@ -16,6 +16,7 @@ install:
   - pip install --upgrade ansible==2.8.* docker
   - pip install git+git://github.com/ansible/molecule@2.22rc6
   - pip install git+https://github.com/ansible/ansible-lint.git
+  - pip install netaddr
   - ansible --version
   - ansible-lint --version
 
