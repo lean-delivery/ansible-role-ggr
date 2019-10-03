@@ -111,15 +111,15 @@
         - key: health
           value: 'health'
 
-    # - name: Start ggr services systemd
-    #   systemd:
-    #     state: started
-    #     enabled: true
-    #     name: '{{ ggr_service_item }}'
-    #   loop:
-    #     - selenoid-ui
-    #     - ggr
-    #     - ggr-ui
-    #   loop_control:
-    #     loop_var: ggr_service_item
+    - name: Enable ggr services systemd
+      systemd:
+        # state: started
+        enabled: true
+        name: '{{ ggr_service_item }}'
+      loop:
+        - selenoid-ui
+        - ggr
+        - ggr-ui
+      loop_control:
+        loop_var: ggr_service_item
   become: true
