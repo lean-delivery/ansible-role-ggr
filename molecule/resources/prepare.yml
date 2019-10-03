@@ -2,7 +2,23 @@
 - name: Install Consul
   hosts: consul_instances
   become: true
-  roles:
-    - role: brianshumate.consul
-      consul_group_name: consul_instances
-      consul_raw_key: ''
+  tasks:
+    - name: debug facts
+      debug:
+        var: ansible_facts
+
+    - name: debug ansible_os_family
+      debug:
+        var: ansible_os_family
+
+    - name: debug ansible_distribution
+      debug:
+        var: ansible_distribution
+
+    - name: debug ansible_distribution_release 
+      debug:
+        var: ansible_distribution_release 
+  # roles:
+  #   - role: brianshumate.consul
+  #     consul_group_name: consul_instances
+  #     consul_raw_key: ''
