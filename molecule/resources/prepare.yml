@@ -2,7 +2,7 @@
 - name: Install Consul
   hosts: consul_instances
   become: true
-  # roles:
-  #   - role: brianshumate.consul
-  #     consul_group_name: consul_instances
-  #     consul_raw_key: ''
+  roles:
+    - role: brianshumate.consul
+      consul_group_name: consul_instances
+      consul_raw_key: ''
