@@ -23,7 +23,7 @@
   block:
     - name: Install setuptools
       apt:
-        name: setuptools
+        name: python-setuptools
         update_cache: true
       register: installed_packages
       until: installed_packages is succeeded
