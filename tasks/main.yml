@@ -24,7 +24,7 @@
     - name: Install setuptools
       apt:
         name: setuptools
-        update_cache: yes
+        update_cache: true
       register: installed_packages
       until: installed_packages is succeeded
       when: ansible_os_family == "Debian"
