@@ -34,7 +34,7 @@ Docker ggr:
   tags:
     - aws
 
-.AWS ggr:
+AWS ggr:
   variables:
     AWS_REGION: us-east-1
   stage: deployment test
@@ -44,7 +44,7 @@ Docker ggr:
   tags:
     - aws
 
-.EPC ggr:
+EPC ggr:
   variables:
     EPC_REGION: EPAM-BY2
   stage: deployment test
