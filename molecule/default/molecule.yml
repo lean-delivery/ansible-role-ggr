@@ -34,7 +34,7 @@ platforms:
       - consul_instances
 provisioner:
   name: ansible
-  # log: True
+  log: false
   lint:
     name: ansible-lint
   config_options:

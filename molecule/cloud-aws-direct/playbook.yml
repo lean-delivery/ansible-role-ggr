@@ -4,7 +4,7 @@
   become: true
   roles:
     - role: ansible-role-ggr
-  post_tasks:
+  tasks:
     - name: Configure Go Grid Router quota
       copy:
         src: ggr-config-example.xml
