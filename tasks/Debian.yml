@@ -1,19 +1,11 @@
 ---
-- name: Install python-pip
-  apt:
-    name:
-      - python-pip
-      - python-setuptools
-    state: present
-    update_cache: true
-  register: pip_install
-  until: pip_install is succeeded
-  become: true
-
-# - name: Install setuptools
+# - name: Install python-pip
 #   apt:
-#     name: python-setuptools
+#     name:
+#       - python-pip
+#       - python-setuptools
+#     state: present
 #     update_cache: true
-#   register: installed_packages
-#   until: installed_packages is succeeded
+#   register: pip_install
+#   until: pip_install is succeeded
 #   become: true

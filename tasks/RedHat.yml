@@ -6,11 +6,3 @@
   register: epel_repo_install
   until: epel_repo_install is succeeded
   become: true
-
-- name: Install python-pip
-  yum:
-    name: python-pip
-    state: present
-  register: python_pip_install
-  until: python_pip_install is succeeded
-  become: true

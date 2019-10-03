@@ -21,12 +21,12 @@
 
 - name: Become block
   block:
-    # - name: Install requirements
-    #   package:
-    #     name: '{{ ggr_requirements }}'
-    #     state: present
-    #   register: installed_packages
-    #   until: installed_packages is succeeded
+    - name: Install requirements
+      package:
+        name: '{{ ggr_requirements }}'
+        state: present
+      register: installed_packages
+      until: installed_packages is succeeded
 
     - name: Install passlib
       pip:
