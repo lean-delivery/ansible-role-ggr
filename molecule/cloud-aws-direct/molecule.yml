@@ -76,7 +76,10 @@ platforms:
 
 provisioner:
   name: ansible
-  log: False
+  log: false
+  config_options:
+    defaults:
+      callback_whitelist: profile_tasks,timer
   playbooks:
     create: ../resources/provisioning/AWS/create.yml
     prepare: ../resources/prepare.yml

@@ -9,12 +9,14 @@
   systemd:
     state: restarted
     name: selenoid-ui
+  notify: Restart ggr.service
   become: true
 
 - name: Restart ggr.service
   systemd:
     state: restarted
     name: ggr
+  notify: Restart ggr-ui.service
   become: true
 
 - name: Restart ggr-ui.service
