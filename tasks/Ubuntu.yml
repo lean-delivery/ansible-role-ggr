@@ -16,7 +16,9 @@
 
 - name: Install setuptools
   apt:
-    name: python-setuptools
+    name:
+      - python3-setuptools
+      - python-passlib
     update_cache: true
   register: installed_packages
   until: installed_packages is succeeded
