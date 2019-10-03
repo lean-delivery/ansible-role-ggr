@@ -15,7 +15,7 @@
         - '{{ ansible_distribution }}.yml'
         - '{{ ansible_os_family }}.yml'
         - not-supported.yml
-      skip: true
+      ignore: true
   loop_control:
     loop_var: platform_tasks
 
