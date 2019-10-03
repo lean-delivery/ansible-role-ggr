@@ -4,13 +4,13 @@
   hosts: all
   become: true
   tasks:
-    - name: Configure Go Grid Router quota
-      copy:
-        dest: '/home/ggr/go-grid-router/quota'
-        src: 'ggr-config-example.xml'
-        mode: 0664
-        owner: 'ggr'
-        group: 'ggr'
+#    - name: Configure Go Grid Router quota
+#      copy:
+#        dest: '/home/ggr/go-grid-router/quota'
+#        src: 'ggr-config-example.xml'
+#        mode: 0664
+#        owner: 'ggr'
+#        group: 'ggr'
 
     - name: Reset failed services
       command: systemctl reset-failed {{ item.key }}
