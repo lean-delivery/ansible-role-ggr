@@ -7,7 +7,7 @@
     - name: Configure Go Grid Router quota
       copy:
         dest: '/home/ggr/go-grid-router/quota'
-        src: '../../files/ggr-config-example.xml'
+        src: 'ggr-config-example.xml'
         mode: 0664
         owner: 'ggr'
         group: 'ggr'
