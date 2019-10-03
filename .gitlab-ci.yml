@@ -29,6 +29,7 @@ Ansible lint:
 Docker ggr:
   stage: deployment test
   script:
+    - apk add --no-cache unzip
     - molecule test -s default
   tags:
     - aws
