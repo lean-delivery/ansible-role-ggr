@@ -1,4 +1,3 @@
 ---
 ggr_requirements:
   - python-passlib
-  - python3-setuptools
