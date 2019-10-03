@@ -3,7 +3,7 @@
   apt:
     name: python3-pip
     state: present
-    update_cache: True
+    update_cache: true
   register: python3_install
   until: python3_install is succeeded
   become: true
