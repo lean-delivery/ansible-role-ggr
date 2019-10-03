@@ -1,5 +1,14 @@
 ---
 - name: Converge
-  hosts: all
+  hosts: consul_instances
+  become: true
   roles:
     - role: ansible-role-ggr
+  tasks:
+    - name: Configure Go Grid Router quota
+      copy:
+        src: '../resources/files/ggr-config-example.xml'
+        dest: /home/ggr/go-grid-router/quota
+        mode: 0664
+        owner: ggr
+        group: ggr

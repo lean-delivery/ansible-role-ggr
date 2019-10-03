@@ -9,5 +9,4 @@
     - name: Assert that ggr services are running
       assert:
         that:
-          - "'running' in ansible_facts.services['ggr.service'].state"
           - "'running' in ansible_facts.services['ggr-ui.service'].state"

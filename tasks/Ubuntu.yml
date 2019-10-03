@@ -1,0 +1,6 @@
+---
+- name: Add universe repository for bionic
+  apt_repository:
+    repo: deb http://archive.ubuntu.com/ubuntu bionic universe
+    state: present
+  become: true

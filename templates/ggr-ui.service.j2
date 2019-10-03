@@ -1,8 +1,6 @@
 [Unit]
 Description=ggr-ui
 Requires=ggr.service
-StartLimitIntervalSec=120
-StartLimitBurst=20
 
 [Service]
 Type=simple
@@ -14,7 +12,7 @@ ExecStop=/bin/kill -15 $MAINPID
 Restart=always
 RestartSec=30
 StartLimitInterval=120
-StartLimitBurst=20
+StartLimitBurst=0
 
 [Install]
 WantedBy=multi-user.target

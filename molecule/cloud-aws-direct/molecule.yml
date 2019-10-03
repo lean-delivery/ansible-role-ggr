@@ -24,9 +24,11 @@ platforms:
     ssh_user: centos
     groups:
       - rhel_family
+      - consul_instances
 
   - name: test-aws-amazon2-ggr
     image: ami-0b898040803850657
+    platform: amazon2
     instance_type: m5.large
     region: us-east-1
     vpc_subnet_id: subnet-0f2b9cd66faea38af
@@ -38,6 +40,7 @@ platforms:
     ssh_user: ec2-user
     groups:
       - rhel_family
+      - consul_instances
 
   - name: test-aws-ubuntu18-ggr
     image: ami-012fd5eb46f56731f
@@ -53,6 +56,7 @@ platforms:
     ssh_user: ubuntu
     groups:
       - debian_family
+      - consul_instances
 
   - name: test-aws-Debian9-ggr
     image: ami-003f19e0e687de1cd
@@ -68,13 +72,17 @@ platforms:
     ssh_user: admin
     groups:
       - debian_family
+      - consul_instances
 
 provisioner:
   name: ansible
-  log: False
+  log: false
+  config_options:
+    defaults:
+      callback_whitelist: profile_tasks,timer
   playbooks:
     create: ../resources/provisioning/AWS/create.yml
-    prepare: ../resources/provisioning/AWS/prepare.yml
+    prepare: ../resources/prepare.yml
     destroy: ../resources/provisioning/AWS/destroy.yml
     verify: ../resources/tests/verify.yml
   lint:

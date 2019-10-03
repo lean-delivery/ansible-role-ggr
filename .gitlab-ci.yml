@@ -5,6 +5,7 @@ stages:
   - deployment test
 
 before_script:
+  - pip install netaddr
   - rm -rf molecule/resources/provisioning
   - ansible --version
   - ansible-lint --version
@@ -28,6 +29,7 @@ Ansible lint:
 Docker ggr:
   stage: deployment test
   script:
+    - apk add --no-cache unzip
     - molecule test -s default
   tags:
     - aws
@@ -37,6 +39,7 @@ AWS ggr:
     AWS_REGION: us-east-1
   stage: deployment test
   script:
+    - apk add --no-cache unzip
     - molecule test -s cloud-aws-direct
   tags:
     - aws

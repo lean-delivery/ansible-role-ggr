@@ -15,6 +15,8 @@ platforms:
     privileged: True
     groups:
       - rhel_family
+      - consul_instances
+
   - name: test-docker-ubuntu1804-ggr
     image: leandelivery/docker-systemd:ubuntu-18.04
     privileged: True
@@ -29,16 +31,18 @@ platforms:
       - SYS_ADMIN
     groups:
       - debian_family
+      - consul_instances
 provisioner:
   name: ansible
-  # log: True
+  log: false
   lint:
     name: ansible-lint
   config_options:
     defaults:
       callback_whitelist: profile_tasks,timer
   playbooks:
-    verify: ../resources/tests/verify.yml
+    prepare: ../resources/prepare.yml
+    verify: ../resources/tests/verify_docker.yml
 scenario:
   name: default
 verifier:
