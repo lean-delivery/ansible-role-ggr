@@ -21,6 +21,12 @@
 
 - name: Become block
   block:
+    - name: Install setuptools
+      apt:
+        name: setuptools
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
     - name: Install requirements
       package:
         name: '{{ ggr_requirements }}'
