@@ -17,6 +17,12 @@
       register: installed_packages
       until: installed_packages is succeeded
 
+    - name: add universe repository for bionic
+      apt_repository:
+        repo: deb http://archive.ubuntu.com/ubuntu bionic universe
+        state: present
+      when: ansible_os_family == "Debian"
+
 #    - name: 'Install pip package'
 #      package:
 #        name: python-pip
