@@ -5,7 +5,7 @@ stages:
   - deployment test
 
 before_script:
-  - pip install netaddr
+  - pip3 install netaddr
   - rm -rf molecule/resources/provisioning
   - ansible --version
   - ansible-lint --version
