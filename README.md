@@ -25,6 +25,10 @@ that can/should be set via parameters to the role. Any variables that are read
 from other roles and/or the global scope (ie. hostvars, group vars, etc.) should
 be mentioned here as well.
 
+ggr_version: 1.6.5
+ggr_ui_version: 1.1.2
+ggr_selenoid_ui_version: 1.9.0
+
 Dependencies
 ------------
 

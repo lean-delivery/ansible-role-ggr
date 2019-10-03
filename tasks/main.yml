@@ -66,15 +66,15 @@
         - key: ggr
           base_url: https://github.com/aerokube/ggr/releases/download
           dest: '{{ home_ggr }}/go-grid-router/ggr'
-          version: 1.6.4
+          version: '{{ ggr_version }}'
         - key: ggr-ui
           base_url: https://github.com/aerokube/ggr-ui/releases/download
           dest: '{{ home_ggr }}/go-grid-router/ggr-ui'
-          version: 1.1.2
+          version: '{{ ggr_ui_version }}'
         - key: selenoid-ui
           base_url: https://github.com/aerokube/selenoid-ui/releases/download
           dest: '{{ home_ggr }}/go-grid-router/selenoid-ui'
-          version: 1.8.0
+          version: '{{ ggr_selenoid_ui_version }}'
 
     - name: Create systemd file ggr
       template:
