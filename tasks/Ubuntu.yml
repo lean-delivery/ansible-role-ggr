@@ -7,11 +7,17 @@
 
 - name: Install python3-pip
   apt:
-    name:
-      - python3-pip
-      - python-setuptools
+    name: python3-pip
     state: present
     update_cache: true
   register: python3_install
   until: python3_install is succeeded
+  become: true
+
+- name: Install setuptools
+  apt:
+    name: python-setuptools
+    update_cache: true
+  register: installed_packages
+  until: installed_packages is succeeded
   become: true
