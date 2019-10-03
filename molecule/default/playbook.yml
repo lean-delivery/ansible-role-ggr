@@ -7,8 +7,8 @@
   post_tasks:
     - name: Configure Go Grid Router quota
       copy:
-        src: '../../files/ggr-config-example.xml'
-        dest: '/home/ggr/go-grid-router/quota'
+        src: ggr-config-example.xml
+        dest: /home/ggr/go-grid-router/quota
         mode: 0664
         owner: ggr
         group: ggr

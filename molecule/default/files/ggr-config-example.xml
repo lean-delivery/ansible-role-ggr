@@ -1,0 +1,10 @@
+<qa:browsers xmlns:qa="urn:config.gridrouter.qatools.ru">
+    <browser name="chrome" defaultVersion="unknown">
+            <version number=" 71.0">
+                <region name="1">
+                    <host name="10.11.2.204" port="4444" count="100"/>
+                    <host name="10.11.2.60" port="4444" count="100"/>
+                </region>
+            </version>
+    </browser>
+</qa:browsers>
