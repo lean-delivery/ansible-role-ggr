@@ -11,11 +11,11 @@
 - name: Configure and install packages for current OS
   include_tasks: '{{ platform_tasks }}'
   with_first_found:
-    files:
-      - '{{ ansible_distribution }}.yml'
-      - '{{ ansible_os_family }}.yml'
-      - not-supported.yml
-    skip: true
+    - files:
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+        - not-supported.yml
+      skip: true
   loop_control:
     loop_var: platform_tasks
 
