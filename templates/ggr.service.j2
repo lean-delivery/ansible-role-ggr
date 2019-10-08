@@ -1,6 +1,7 @@
 [Unit]
 Description=GGR
 Requires=selenoid-ui.service
+ConditionPathExists={{ home_ggr }}/go-grid-router/quota/*.xml
 
 [Service]
 Type=simple
