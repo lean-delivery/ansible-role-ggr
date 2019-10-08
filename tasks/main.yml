@@ -82,7 +82,7 @@
         dest: '{{ ggr_start_script_path }}{{ item }}'
         owner: '{{ ggr_user }}'
         group: '{{ ggr_user }}'
-        mode: 0774
+        mode: 0664
       loop: '{{ ggt_init_script }}'
       notify:
         - Reload systemd configuration
