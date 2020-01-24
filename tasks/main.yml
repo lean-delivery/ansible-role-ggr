@@ -105,6 +105,7 @@
         owner: '{{ ggr_user }}'
         group: '{{ ggr_user }}'
         mode: 0640
+      no_log: true
       loop: '{{ ggr_api_users | dict2items }}'
 
     - name: Enable ggr services systemd

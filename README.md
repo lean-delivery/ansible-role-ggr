@@ -7,52 +7,95 @@ ggr role
 ![Ansible](https://img.shields.io/ansible/role/d/42600.svg)
 ![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2F42600%2F&query=$.min_ansible_version)
 
-A brief description of the role goes here.
+Set up [Go Grid Router](https://aerokube.com/ggr/latest/)
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should
-be mentioned here. For instance, if the role uses the EC2 module, it may be a
-good idea to mention in this section that the boto package is required.
+- **Supported OS**:
+  - CentOS
+    - 7
+  - Ubuntu
+    - 16.04, 18.04
+  - Debian
+    - 9
+  - Amazon
+    - All
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including
-any variables that are in defaults/main.yml, vars/main.yml, and any variables
-that can/should be set via parameters to the role. Any variables that are read
-from other roles and/or the global scope (ie. hostvars, group vars, etc.) should
-be mentioned here as well.
+- `selenoid_port`  
+  default: `4444`
+- `home_ggr`  
+  default: `/home/ggr`
+- `ggr_components`  
+  default: 
+  ```yaml
+  ggr_components:
+    - go-grid-router
+    - go-grid-router/quota
+    - selenoid-ui
+  ```
+ 
+- `ggr_config`  
+  default: `- ggr-config-consul-template.tpl`
+- `ggr_start_script_path`  
+  default: `/etc/systemd/system/`
+- `ggr_user`  
+  default: `ggr`
 
-ggr_version: 1.6.5
-ggr_ui_version: 1.1.2
-ggr_selenoid_ui_version: 1.9.0
+- `ggt_init_script`  
+  default:
+  ```yaml
+  ggt_init_script:
+    - ggr.service
+    - ggr-ui.service
+    - selenoid-ui.service
+  ```
+- `ggr_version`  
+  default: `1.6.5`
+- `ggr_ui_version`  
+  default: `1.1.2`
+- `ggr_selenoid_ui_version`  
+  default: `1.9.0`
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in
-regards to parameters that may need to be set for other roles, or variables that
-are used from other roles.
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-brianshumate.consul-blue.svg)](https://galaxy.ansible.com/brianshumate/consul/)
+[![Build Status](https://travis-ci.org/brianshumate/ansible-consul.svg?branch=master)](https://travis-ci.org/brianshumate/ansible-consul)
+
+ Consul role usage example
+ ```yaml
+ - name: Install Consul
+   hosts: consul_instances
+   become: true
+   roles:
+    - role: brianshumate.consul
+      consul_group_name: consul_instances
+      consul_raw_key: ''
+ ```
 
 Example Playbook
-for packer
----
-- name: install
-  hosts: all
-  gather_facts: no
-  roles:
-    - { role: ../ansible-role-ggr, become: true }
----
 ----------------
 
-Including an example of how to use your role (for instance, with variables
-passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: ansible-role-ggr }
+```yaml
+---
+- name: Install GGR
+  hosts: consul_instances
+  become: true
+  roles:
+    - role: lean_delivery.ggr
+  tasks:
+    - name: Configure Go Grid Router quota
+      copy:
+        src: '../resources/files/ggr-config-example.xml'
+        dest: /home/ggr/go-grid-router/quota
+        mode: 0664
+        owner: ggr
+        group: ggr
+```
 
 License
 -------
