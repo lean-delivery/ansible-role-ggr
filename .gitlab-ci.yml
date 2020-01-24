@@ -24,7 +24,7 @@ Ansible lint:
   after_script:
     - rm -rf ~/ansible-lint-rules
   tags:
-    - aws
+    - lint
 
 Docker ggr:
   stage: deployment test
