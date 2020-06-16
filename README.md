@@ -54,11 +54,11 @@ Role Variables
     - selenoid-ui.service
   ```
 - `ggr_version`  
-  default: `1.6.5`
+  default: `1.6.7`
 - `ggr_ui_version`  
   default: `1.1.2`
 - `ggr_selenoid_ui_version`  
-  default: `1.9.0`
+  default: `1.10.0`
 
 Dependencies
 ------------
