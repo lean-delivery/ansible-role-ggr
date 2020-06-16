@@ -15,7 +15,7 @@ before_install:
 install:
   - pip3 install --upgrade ansible==2.8.* docker
   - pip3 install molecule==2.22
-  - pip3 install git+https://github.com/ansible/ansible-lint.git
+  - pip3 install ansible-lint
   - pip3 install netaddr
   - ansible --version
   - ansible-lint --version
