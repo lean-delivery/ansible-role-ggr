@@ -15,9 +15,9 @@ ggt_init_script:
   - ggr-ui.service
   - selenoid-ui.service
 
-ggr_version: 1.6.5
+ggr_version: 1.6.7
 ggr_ui_version: 1.1.2
-ggr_selenoid_ui_version: 1.9.0
+ggr_selenoid_ui_version: 1.10.0
 
 ggr_api_users:
   ggr-users: 'SuperSecretPass098123'
