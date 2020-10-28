@@ -20,8 +20,8 @@ ggr_ui_version: 1.1.2
 ggr_selenoid_ui_version: 1.10.0
 
 ggr_api_users:
-  ggr-users: 'SuperSecretPass098123'
-  health: 'health'
+  ggr-users: SuperSecretPass123
+  health: health
 
 # consul_service_definition:
 #   - consul-ggr-sevice.json
